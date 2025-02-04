@@ -147,7 +147,7 @@ def preload_questions(standard: str, subject: str, chapter: str, topic: str, is_
         used_questions.clear()
         current_topic = topic
     
-    file_path = f"/home/ubuntu/schoolbooks/{standard}/{subject}/{topic}.txt"
+    file_path = rf"D:\schoolquiz\schoolbookstxt\{standard}\{subject}\{topic}.txt"
     
     print(f"\nPreloading questions for {subject} Chapter {topic} (Standard {standard})")
     print("=" * 50)
@@ -196,7 +196,7 @@ def get_next_questions():
 
         if len(question_cache) < 5:
             if standard and subject and chapter:
-                file_path = f"D:/bck/schoolbooks/{standard}th/{subject}/Chapter {chapter}.txt"
+                file_path = f"D:/schoolquiz/schoolbookstxt/{standard}th/{subject}/Chapter {chapter}.txt"
                 if os.path.exists(file_path):
                     chapter_content = read_chapter_content(file_path)
                     questions = generate_quiz_questions(text_content=chapter_content, is_practice_mode=is_practice_mode)
@@ -237,4 +237,4 @@ if __name__ == '__main__':
     print("\nStarting Quiz Generator Server...")
     print("=" * 50)
     CORS(app, resources={r"/": {"origins": ""}})
-    app.run(debug=True)
+    app.run(debug=True, port=5000, host='0.0.0.0')
