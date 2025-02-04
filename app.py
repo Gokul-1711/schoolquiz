@@ -11,7 +11,7 @@ from urllib.parse import unquote
 from threading import Thread
 import re
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
@@ -278,7 +278,7 @@ def get_status():
         "mode": "Practice" if current_mode else "Test"
     }), 200
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     print("\nStarting Quiz Generator Server...")
     print(f"Practice Mode Questions: {PRACTICE_MODE_QUESTIONS}")
     print(f"Test Mode Questions: {TEST_MODE_QUESTIONS}")
